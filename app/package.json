@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@socket.io/redis-adapter": "^8.2.1",
+    "amqp": "^0.2.7",
+    "amqplib": "^0.10.3",
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.2",
+    "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.0.1",
+    "redis": "^4.6.10",
+    "server": "file:",
+    "socket.io": "^4.7.2",
+    "uuid": "^9.0.1",
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.4.0"
+  }
+}
