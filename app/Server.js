@@ -137,7 +137,7 @@ try {
 
     // }
 
-    onlineUserNames = await client.keys("*[^,ToEx]");
+    onlineUserNames = await client.keys("*[^,ToEx,Backup]");
     rsUsers = onlineUserNames.map((userName) => ({ username: userName }));
     //await RedisActions.wait(200);
     await socket.emit("getUsers", rsUsers);
