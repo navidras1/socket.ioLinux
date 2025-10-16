@@ -2,7 +2,7 @@
 FROM node:18-alpine
 
 # Set working directory in the container
-WORKDIR /app
+WORKDIR /home/resource/socket.ioLinux/app
 
 # Copy package.json and package-lock.json (if available)
 COPY package*.json ./
