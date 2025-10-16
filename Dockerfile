@@ -4,7 +4,7 @@
 FROM node:22-alpine AS base
 
 # Set working directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
@@ -21,10 +21,10 @@ COPY . .
 FROM node:22-alpine AS runtime
 
 # Set working directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy from the previous stage
-COPY --from=base /usr/src/app ./
+COPY --from=base /app ./
 
 # Create a non-root user for security
 RUN addgroup -S nodegroup && adduser -S nodeuser -G nodegroup
