@@ -4,7 +4,7 @@ FROM node:22-alpine AS runtime
 WORKDIR /app
 
 # Copy only the necessary files from build stage
-COPY --from=base /usr/src/app ./
+COPY --from=base /app ./
 
 # Create a non-root user for security
 RUN addgroup -S nodegroup && adduser -S nodeuser -G nodegroup
