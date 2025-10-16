@@ -1,17 +1,40 @@
+# ------------------------------------------------------
+# 1️⃣ Base Stage - Install dependencies
+# ------------------------------------------------------
+FROM node:22-alpine AS base
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Copy package files
+COPY package*.json ./
+
+# Install only production dependencies
+RUN npm ci --omit=dev
+
+# Copy application source code
+COPY . .
+
+# ------------------------------------------------------
+# 2️⃣ Runtime Stage - Slim final image
+# ------------------------------------------------------
 FROM node:22-alpine AS runtime
 
 # Set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copy only the necessary files from build stage
-COPY --from=base /app ./
+# Copy from the previous stage
+COPY --from=base /usr/src/app ./
 
 # Create a non-root user for security
 RUN addgroup -S nodegroup && adduser -S nodeuser -G nodegroup
 USER nodeuser
 
-# Expose port (match your app’s port)
+# Expose the application port
 EXPOSE 3000
 
-# Start the Node.js application
+# Define default environment
+ENV NODE_ENV=production
+
+# Run the app
 CMD ["node", "server.js"]
