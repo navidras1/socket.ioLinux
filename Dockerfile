@@ -8,7 +8,9 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm config set unsafe-perm true \
+ && apk add --no-cache python3 make g++ \
+ && npm ci --only=production
 
 # Copy the rest of the app code
 COPY . .
