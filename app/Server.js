@@ -30,7 +30,8 @@ try {
   const server = new Server(httpServer, {
     cors: {
       origin: ["http://localhost:3000", "http://localhost:5123"],
-      allowedHeaders: ["Access-Control-Allow-Origin"],
+      methods: ["GET", "POST", "OPTIONS"],
+      allowedHeaders: ["Authorization", "Access-Control-Allow-Origin"],
       credentials: true,
     },
   });
