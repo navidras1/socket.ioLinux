@@ -76,7 +76,10 @@ try {
     socket.on("connect_error", (err) =>
       console.log(`${Common.DateNOW()} errrr ${err}`)
     );
-
+    await client.del("backup1");
+    await client.del("backup2");
+    await client.del("backup3");
+    await client.del("backup4");
     //let TestResss= Commnads.get("Test")(5,6);
 
     console.log(`${Common.DateNOW()} Client connected [id=${socket.id}]`);
